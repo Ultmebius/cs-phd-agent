@@ -1,0 +1,110 @@
+<!-- charset=utf-8 -->
+# CS PhD Research Report
+
+**Generated:** {{ report.generated_at.strftime("%Y-%m-%d %H:%M") }}
+**Universities:** {{ report.target_university }}
+**Research Area:** {{ report.target_area }}
+{% if report.resume_summary %}**Resume:** Provided{% else %}**Resume:** Not provided{% endif %}
+
+---
+
+## Executive Summary
+
+{{ report.summary }}
+
+---
+
+## Professor Profiles
+
+{% for prof in report.professors %}
+### {{ loop.index }}. {{ prof.name }}
+
+- **Title:** {{ prof.title }}
+- **University:** {{ prof.university }}
+- **Department:** {{ prof.department }}
+- **Homepage:** [{{ prof.homepage_url }}]({{ prof.homepage_url }})
+- **Research Areas:** {{ prof.research_areas | join(", ") }}
+
+{% if prof.recent_papers %}
+**Recent Papers:**
+{% for paper in prof.recent_papers %}
+- {{ paper.title }}{% if paper.year %} ({{ paper.year }}){% endif %}{% if paper.venue %} — {{ paper.venue }}{% endif %}
+{% if paper.tech_stack %}  *Tech stack:* {{ paper.tech_stack | join(", ") }}{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if prof.lab.name %}
+**Lab:** {{ prof.lab.name }}{% if prof.lab.url %} ([link]({{ prof.lab.url }})){% endif %}
+{% if prof.lab.description %}  {{ prof.lab.description }}{% endif %}
+{% endif %}
+
+{% endfor %}
+---
+
+## Match Scores
+
+{% if report.scores %}
+| Professor | Overall | Interest | Skills | Experience |
+|-----------|---------|----------|--------|------------|
+{% set sorted_scores = report.scores | sort(attribute="overall", reverse=True) %}
+{% for s in sorted_scores %}
+| {{ s.professor_name }} | {{ "%.0f" | format(s.overall) }} | {{ "%.0f" | format(s.research_interest) }} | {{ "%.0f" | format(s.skill_alignment) }} | {{ "%.0f" | format(s.experience_relevance) }} |
+{% endfor %}
+{% else %}
+No match scores available (resume was not provided).
+{% endif %}
+
+---
+
+## Research Trends & Funding
+
+{% for t in report.trends %}
+### {{ t.professor_name }}
+
+- **Active Directions:** {{ t.directions | join(", ") }}
+- **Momentum:** {{ t.momentum }}
+- **Funding Estimate:** {{ t.funding_estimate }}
+
+**Evidence:**
+{% for e in t.evidence %}
+- {{ e }}
+{% endfor %}
+
+{% if t.funding_evidence %}
+**Funding Evidence:**
+{% for fe in t.funding_evidence %}
+- {{ fe }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+---
+
+## Outreach Emails
+
+{% for email in report.emails %}
+### {{ email.professor_name }}
+
+**Subject:** {{ email.subject }}
+
+**English Version:**
+{{ email.body_en }}
+
+{% if email.body_zh %}
+**中文版本:**
+{{ email.body_zh }}
+{% endif %}
+
+**Personalization Details:**
+{% for d in email.personalized_details %}
+- {{ d }}
+{% endfor %}
+
+{% endfor %}
+---
+
+## Sources
+
+{% for url in report.raw_sources %}
+- [{{ url }}]({{ url }})
+{% endfor %}
