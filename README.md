@@ -110,6 +110,8 @@ cs-phd-agent/
 | `ANTHROPIC_API_KEY` | 是 | Anthropic API |
 | `ANTHROPIC_BASE_URL` | 否 | 自定义 API 地址，默认用 Anthropic |
 | `ANTHROPIC_MODEL` | 否 | 模型名，默认 `claude-sonnet-4-20250514` |
+| `MAX_RETRIES` | 否 | API 调用最大重试次数，默认 3 |
+| `OUTPUT_DIR` | 否 | 输出目录，默认 `./output` |
 | `TOP_K_PROFESSORS` | 否 | 每校最多调研教授数，默认 5 |
 
 ## 依赖
