@@ -89,16 +89,18 @@ cs-phd-agent/
 ├── pyproject.toml              # 依赖和 CLI 入口
 ├── .env.example                # 环境变量模板
 ├── README.md                   # 本文件
-├── models.py                   # Pydantic 数据模型
-├── config.py                   # 环境变量配置
-├── resume_parser.py            # PDF 简历解析
-├── researcher.py               # Tavily 网络调研
-├── analyzer.py                 # Claude 推理链
-├── main.py                     # 管道编排
-├── report.py                   # 报告渲染
-├── cli.py                      # CLI 入口
-└── templates/
-    └── report.md.j2            # Markdown 模板
+└── cs_phd_agent/               # Python 包
+    ├── __init__.py
+    ├── models.py                # Pydantic 数据模型
+    ├── config.py                # 环境变量配置
+    ├── resume_parser.py         # PDF 简历解析
+    ├── researcher.py            # Tavily 网络调研
+    ├── analyzer.py              # Claude 推理链
+    ├── main.py                  # 管道编排
+    ├── report.py                # 报告渲染
+    ├── cli.py                   # CLI 入口
+    └── templates/
+        └── report.md.j2         # Markdown 模板
 ```
 
 ## 环境变量
