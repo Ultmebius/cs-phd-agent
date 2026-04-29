@@ -107,7 +107,7 @@ cs-phd-agent/
 | 变量 | 必填 | 说明 |
 |------|------|------|
 | `TAVILY_API_KEY` | 是 | Tavily 搜索 API |
-| `ANTHROPIC_API_KEY` | 是 | Anthropic/DeepSeek API |
+| `ANTHROPIC_API_KEY` | 是 | Anthropic API |
 | `ANTHROPIC_BASE_URL` | 否 | 自定义 API 地址，默认用 Anthropic |
 | `ANTHROPIC_MODEL` | 否 | 模型名，默认 `claude-sonnet-4-20250514` |
 | `TOP_K_PROFESSORS` | 否 | 每校最多调研教授数，默认 5 |
