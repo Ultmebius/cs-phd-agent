@@ -1,0 +1,19 @@
+[project]
+name = "cs-phd-agent"
+version = "0.1.0"
+description = "Automated deep research agent for CS PhD application — finds professors, analyzes match scores, drafts outreach emails"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+    "pydantic>=2.0.0",
+    "click>=8.0",
+    "rich>=13.0",
+    "jinja2>=3.0",
+    "python-dotenv>=1.0",
+    "pdfplumber>=0.9.0",
+    "tavily-python>=0.7.0",
+    "tenacity>=8.0",
+]
+
+[project.scripts]
+cs-phd-agent = "cs_phd_agent.cli:main"
